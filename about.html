@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | LSG Global Health</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        :root {
+            --brand-green: #99CC33; 
+            --brand-grey: #2D3436;  
+            --footer-dark: #121212;
+            --glass-bg: rgba(255, 255, 255, 0.9);
+        }
+
+        /* 1. Custom Interactive Cursor */
+        #custom-cursor {
+            width: 20px; height: 20px;
+            background: var(--brand-green);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.2s ease;
+            display: none;
+        }
+
+        @media (min-width: 992px) { #custom-cursor { display: block; } }
+
+        /* 2. Hover Pulse for Icons */
+        .value-card:hover i, .stat-card:hover .stat-number {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* 3. Magnetic Button Transition */
+        .btn-green, .lsg-health-appointment-btn {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            display: inline-block;
+        }
+
+        /* 4. Scroll Reveal Classes */
+        .reveal-visible {
+            opacity: 1 !important;
+            transform: translateY(0) scale(1) !important;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--brand-grey);
+            background-color: #fdfdfd;
+            overflow-x: hidden;
+        }
+
+        /* --- NAVIGATION PILL --- */
+        .page-about .navbar-nav .nav-item:nth-child(2) .nav-link {
+            color: white !important;
+            background: var(--brand-green);
+            padding: 8px 20px !important;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(153, 204, 51, 0.4);
+        }
+
+        /* --- HERO SECTION --- */
+        .about-hero { 
+            position: relative;
+            padding: 160px 0 100px; 
+            background: url('img/abouthero.png') no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            border-radius: 0 0 100px 100px;
+            margin-top: -100px;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 30%, rgba(153, 204, 51, 0.2) 100%);
+            border-radius: 0 0 100px 100px;
+        }
+
+        .hero-content { position: relative; z-index: 2; }
+
+        .navbar { backdrop-filter: blur(15px); background: var(--glass-bg); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-link { font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin: 0 15px; color: var(--brand-grey) !important; transition: 0.3s; }
+
+        .stat-card { border-right: 1px solid #eee; padding: 20px; transition: 0.3s; }
+        .stat-card:last-child { border-right: none; }
+        .stat-number { font-size: 3rem; font-weight: 800; color: var(--brand-green); display: block; }
+        
+        .value-card {
+            background: white; padding: 40px; border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02); height: 100%; transition: 0.4s;
+        }
+        .value-card:hover { transform: translateY(-10px); border-bottom: 4px solid var(--brand-green); }
+
+        footer { background: var(--footer-dark); border-radius: 60px 60px 0 0; padding: 100px 0 40px; color: white; }
+        footer h5 { color: var(--brand-green); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; }
+        footer a { color: rgba(255,255,255,0.6); text-decoration: none; transition: 0.3s; }
+        footer a:hover { color: var(--brand-green); }
+
+        @media (max-width: 991px) {
+            .navbar-nav { padding: 20px 0; gap: 15px; }
+            .about-hero { text-align: center; border-radius: 0 0 40px 40px; }
+            .hero-overlay { border-radius: 0 0 40px 40px; }
+            footer { text-align: center; border-radius: 30px 30px 0 0; }
+            .stat-card { border-right: none; border-bottom: 1px solid #eee; }
+        }
+    </style>
+</head>
+
+<body class="page-about">
+
+    <div id="custom-cursor"></div>
+
+    <nav class="navbar navbar-expand-lg sticky-top py-3">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img style="width: 100px; height: 80px; object-fit: contain;" src="img/logo.png" alt="LSG Global">
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <i class="bi bi-list fs-1"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav mx-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="career.html">Career</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+                <div class="text-end d-none d-lg-block">
+                    <small class="text-muted fw-bold d-block text-uppercase" style="font-size: 0.65rem;">Priority Support</small>
+                    <span class="fw-800" style="color: var(--brand-green); font-size: 1.2rem;">+2349012345678</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="about-hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content text-center">
+            <span class="badge bg-success bg-opacity-10 text-success px-4 py-2 rounded-pill text-uppercase fw-bold mb-3" style="letter-spacing: 2px;">Our Legacy</span>
+            <h1 class="display-2 fw-800 mt-2">Excellence in <br><span style="color: var(--brand-green);">Global Healthcare</span></h1>
+            <p class="lead mx-auto mt-4 text-secondary" style="max-width: 750px; font-weight: 500;">
+                At LSG Global Health, we bridge the gap between world-class medical standards and local healthcare delivery.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row text-center g-4">
+                <div class="col-md-3"><div class="stat-card"><span class="stat-number">10+</span><span class="fw-bold text-uppercase small opacity-50">Years Experience</span></div></div>
+                <div class="col-md-3"><div class="stat-card"><span class="stat-number">500+</span><span class="fw-bold text-uppercase small opacity-50">Staff Members</span></div></div>
+                <div class="col-md-3"><div class="stat-card"><span class="stat-number">15+</span><span class="fw-bold text-uppercase small opacity-50">Countries Served</span></div></div>
+                <div class="col-md-3"><div class="stat-card"><span class="stat-number">24/7</span><span class="fw-bold text-uppercase small opacity-50">Global Support</span></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="position-relative">
+                        <img src="img/aboutL.png" class="img-fluid reveal-item" style="border-radius: 50px;" alt="Team">
+                        <div class="bg-white p-4 shadow rounded-4 position-absolute bottom-0 end-0 m-3 d-none d-md-block">
+                            <h5 class="fw-bold mb-1 text-success">Accredited</h5>
+                            <p class="small mb-0">Global Clinical Standards</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 ps-lg-5 mt-5 mt-lg-0">
+                    <h2 class="display-6 fw-bold mb-4">Bridging Geography with Quality</h2>
+                    <p class="mb-4 text-secondary">LSG Global Health LLC was founded on the principle that quality healthcare should not be limited by geography.</p>
+                    <div class="d-flex mb-4">
+                        <div class="me-3"><i class="bi bi-shield-check fs-2 text-success"></i></div>
+                        <div><h5 class="fw-bold">Uncompromising Quality</h5><p class="small text-muted">We adhere to international clinical standards.</p></div>
+                    </div>
+                    <div class="d-flex">
+                        <div class="me-3"><i class="bi bi-globe fs-2 text-success"></i></div>
+                        <div><h5 class="fw-bold">Global Perspective</h5><p class="small text-muted">Strategies built for complex supply chains.</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light" style="border-radius: 100px;">
+        <div class="container py-5">
+            <h2 class="text-center fw-800 mb-5">Our Core Values</h2>
+            <div class="row g-4">
+                <div class="col-md-4"><div class="value-card"><i class="bi bi-heart-pulse fs-1 text-success mb-3 d-block"></i><h4 class="fw-bold">Integrity</h4><p class="text-muted">Honesty at the heart of our operations.</p></div></div>
+                <div class="col-md-4"><div class="value-card"><i class="bi bi-lightning fs-1 text-success mb-3 d-block"></i><h4 class="fw-bold">Innovation</h4><p class="text-muted">Solving logistical challenges with tech.</p></div></div>
+                <div class="col-md-4"><div class="value-card"><i class="bi bi-people fs-1 text-success mb-3 d-block"></i><h4 class="fw-bold">Community</h4><p class="text-muted">Empowering local workers through training.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <img src="img/logo.png" alt="Logo" height="50" class="mb-4 bg-white p-2 rounded mx-auto d-block d-lg-inline-block">
+                    <p class="opacity-75">LSG Global Health is a premier provider of integrated healthcare solutions, committed to excellence and global wellness.</p>
+                </div>
+                <div class="col-md-4 col-lg-2 ms-lg-auto">
+                    <h5>Company</h5>
+                    <ul class="list-unstyled mt-4">
+                        <li><a href="about.html" class="d-block mb-2">About Us</a></li>
+                        <li><a href="vision.html" class="d-block mb-2">Our Vision</a></li>
+                        <li><a href="impact.html" class="d-block mb-2">Global Impact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <h5>Connect</h5>
+                    <p class="small opacity-50 mt-4">123 Global Plaza, NY</p>
+                    <div class="mt-4">
+                        <a href="#" class="me-3 fs-4 text-decoration-none"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="me-3 fs-4 text-decoration-none"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="fs-4 text-decoration-none"><i class="bi bi-twitter-x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-5 opacity-10">
+            <div class="text-center small opacity-50 pt-3">© 2026 LSG Global Health. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Custom Cursor
+            const cursor = document.getElementById('custom-cursor');
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            const interactables = document.querySelectorAll('a, button, .value-card, .stat-card');
+            interactables.forEach(el => {
+                el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(2.5)'; cursor.style.background = 'rgba(153, 204, 51, 0.5)'; });
+                el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)'; cursor.style.background = '#99CC33'; });
+            });
+
+            // 2. Magnetic Buttons
+            const magneticBtns = document.querySelectorAll('.btn-green, .lsg-health-appointment-btn');
+            magneticBtns.forEach(btn => {
+                btn.addEventListener('mousemove', (e) => {
+                    const pos = btn.getBoundingClientRect();
+                    const x = e.clientX - pos.left - pos.width / 2;
+                    const y = e.clientY - pos.top - pos.height / 2;
+                    btn.style.transform = `translate(${x * 0.3}px, ${y * 0.5}px) scale(1.05)`;
+                });
+                btn.addEventListener('mouseout', () => { btn.style.transform = 'translate(0px, 0px) scale(1)'; });
+            });
+
+            // 3. Scroll Reveal
+            const revealElements = document.querySelectorAll('.stat-card, .value-card, h1, .img-fluid, footer .row');
+            revealElements.forEach(el => {
+                el.style.opacity = "0";
+                el.style.transform = "translateY(30px) scale(0.98)";
+                el.style.transition = "all 0.8s ease-out";
+            });
+
+            const revealOnScroll = () => {
+                revealElements.forEach(el => {
+                    if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('reveal-visible');
+                });
+            };
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll();
+        });
+    </script>
+</body>
+</html>

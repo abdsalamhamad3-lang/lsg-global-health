@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LSG Global Health | Leading Healthcare Services</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        :root {
+            --brand-green: #99CC33; 
+            --brand-grey: #2D3436;  
+            --footer-dark: #121212;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+        }
+
+        /* 1. Custom Interactive Cursor (The "Dot") */
+        #custom-cursor {
+            width: 20px; height: 20px;
+            background: var(--brand-green);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.2s ease;
+            display: none; 
+        }
+
+        @media (min-width: 992px) { #custom-cursor { display: block; } }
+
+        /* 2. Hover Pulse for Icons */
+        .service-box:hover i, .pillar-icon:hover i {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        /* 3. Magnetic Button Feel & Transition Settings */
+        .btn-green, .lsg-health-appointment-btn {
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+            display: inline-block;
+        }
+
+        /* 4. Active Scroll Reveal Class */
+        .reveal-visible {
+            opacity: 1 !important;
+            transform: translateY(0) scale(1) !important;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--brand-grey);
+            background-color: #fdfdfd;
+            overflow-x: hidden;
+        }
+
+        /* --- STYLING --- */
+        .page-home .navbar-nav .nav-item:nth-child(1) .nav-link {
+            color: white !important;
+            background: var(--brand-green);
+            padding: 8px 20px !important;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(153, 204, 51, 0.4);
+        }
+
+        .navbar {
+            backdrop-filter: blur(15px);
+            background: var(--glass-bg);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .nav-link { 
+            font-weight: 700; text-transform: uppercase; font-size: 0.85rem; 
+            letter-spacing: 1px; margin: 0 15px; color: var(--brand-grey) !important; transition: 0.3s;
+        }
+
+        .hero { padding: 120px 0; position: relative; overflow: hidden; }
+        .hero h1 { letter-spacing: -2px; line-height: 1.1; }
+
+        .btn-green {
+            background: var(--brand-green); color: white !important; border: none;
+            padding: 18px 40px; border-radius: 50px; font-weight: 800; 
+            text-transform: uppercase; letter-spacing: 1px; transition: 0.4s;
+            box-shadow: 0 10px 30px rgba(153, 204, 51, 0.3); text-decoration: none;
+        }
+
+        .service-box {
+            background: white; padding: 50px 40px; border-radius: 30px;
+            border: 1px solid #f0f0f0; transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%; position: relative;
+        }
+        .service-box:hover { transform: scale(1.05); border-color: var(--brand-green); box-shadow: 0 30px 60px rgba(0,0,0,0.05); }
+        .service-box i {
+            background: #f4f9e9; width: 80px; height: 80px; display: flex; 
+            align-items: center; justify-content: center; border-radius: 20px; 
+            margin: 0 auto 25px; color: var(--brand-green) !important;
+        }
+
+        .lsg-grid-photo { width: 100%; height: 220px; object-fit: cover; border-radius: 60px 5px 60px 5px; transition: 0.3s; }
+        .lsg-grid-photo:hover { border-radius: 5px 60px 5px 60px; }
+
+        .lsg-testimonial-card { background: #fbfdf9; border-left: 8px solid var(--brand-green); padding: 40px; border-radius: 0 30px 30px 0; }
+
+        .lsg-health-cta-bg { background: var(--brand-grey); padding: 80px 0; border-radius: 50px; margin: 50px 0; color: white; }
+        .lsg-health-appointment-btn { background: var(--brand-green); color: white !important; padding: 20px 45px; border-radius: 50px; font-weight: 800; text-decoration: none; }
+
+        footer { background: var(--footer-dark); border-radius: 60px 60px 0 0; padding: 100px 0 40px; color: white; }
+        footer h5 { color: var(--brand-green); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 2px; }
+        footer a { color: rgba(255,255,255,0.6); text-decoration: none; transition: 0.3s; }
+        footer a:hover { color: var(--brand-green); }
+
+        .main-visual { border-radius: 80px 10px 80px 10px; box-shadow: 20px 20px 0px rgba(153, 204, 51, 0.1); }
+
+        @media (max-width: 991px) {
+            .navbar-nav { padding: 20px 0; gap: 15px; }
+            .hero { text-align: center; padding: 60px 0; }
+            .lsg-health-cta-bg { text-align: center; border-radius: 30px; }
+            footer { text-align: center; }
+        }
+    </style>
+</head>
+
+<body class="page-home">
+
+    <div id="custom-cursor"></div>
+
+    <nav class="navbar navbar-expand-lg sticky-top py-3">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img style="width: 100px; height: 80px; object-fit: contain;" src="img/logo.png" alt="LSG Global"></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <i class="bi bi-list fs-1"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav mx-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="career.html">Career</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+                <div class="text-end d-none d-lg-block">
+                    <small class="text-muted fw-bold d-block text-uppercase" style="font-size: 0.65rem;">Priority Support</small>
+                    <span class="fw-800" style="color: var(--brand-green); font-size: 1.2rem;">+2349012345678</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-2 fw-bold">Innovating Global <br><span style="color: var(--brand-green);">Health Systems</span></h1>
+                    <p class="lead my-5 text-secondary">LSG Global Health provides cutting-edge medical logistics, facility management, and specialist staffing solutions across the globe.</p>
+                    <div class="d-flex gap-4 flex-wrap">
+                        <a href="#" class="btn btn-green">Our Mission</a>
+                        <button class="btn btn-outline-dark px-5 rounded-pill border-2 fw-bold">Partner With Us</button>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-5 mt-lg-0">
+                    <img src="img/heroR.png" class="img-fluid main-visual" alt="Hospital Facility">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="lsg-focus-context" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <img src="img/images.png" alt="Medical Facility" class="main-visual img-fluid">
+                </div>
+                <div class="col-lg-7 ps-lg-5">
+                    <h2 class="display-6 fw-bold mb-4" style="color: var(--brand-green);">Our Focus Is Helping Systems Operate Well Globally</h2>
+                    <p class="mb-4">LSG Global Health LLC brings safe, innovative, and expert healthcare services to those that desire a world-class clinical setting.</p>
+                    <div class="service-box mt-4">
+                        <h4 class="fw-bold">Compassionate Global Health Services</h4>
+                        <p class="text-secondary">Integrated medical support for institutions operating in challenging environments.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="service-box">
+                        <i class="bi bi-shield-plus fs-1"></i>
+                        <h4 class="fw-bold">Medical Staffing</h4>
+                        <p class="text-muted">Recruiting and managing high-caliber medical professionals for global assignments.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-box">
+                        <i class="bi bi-box-seam fs-1"></i>
+                        <h4 class="fw-bold">Health Logistics</h4>
+                        <p class="text-muted">Specialized supply chain management for pharmaceuticals and sensitive equipment.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="service-box">
+                        <i class="bi bi-building-gear fs-1"></i>
+                        <h4 class="fw-bold">Facility Management</h4>
+                        <p class="text-muted">Full-scale operational support for hospitals, clinics, and diagnostic centers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <div class="lsg-health-cta-bg">
+            <div class="row align-items-center px-4 px-lg-5">
+                <div class="col-lg-8">
+                    <h2 class="display-5 fw-bold mb-0">Schedule A FREE Global Health Consultation</h2>
+                </div>
+                <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                    <a href="#" class="lsg-health-appointment-btn shadow">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <img src="img/logo.png" alt="Logo" height="50" class="mb-4 bg-white p-2 rounded mx-auto d-block d-lg-inline-block">
+                    <p class="opacity-75">LSG Global Health is a premier provider of integrated healthcare solutions, committed to excellence and global wellness.</p>
+                </div>
+                <div class="col-md-4 col-lg-2 ms-lg-auto">
+                    <h5>Company</h5>
+                    <ul class="list-unstyled mt-4">
+                        <li><a href="about.html" class="d-block mb-2">About Us</a></li>
+                        <li><a href="vision.html" class="d-block mb-2">Our Vision</a></li>
+                        <li><a href="impact.html" class="d-block mb-2">Global Impact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <h5>Connect</h5>
+                    <p class="small opacity-50 mt-4">123 Global Plaza, Health City, NY</p>
+                    <p class="small opacity-50">info@lsgglobalhealth.com</p>
+                    <div class="mt-4">
+                        <a href="#" class="me-3 fs-4"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="me-3 fs-4"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="fs-4"><i class="bi bi-twitter-x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-5 opacity-10">
+            <div class="text-center small opacity-50 pt-3">© 2026 LSG Global Health. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- 1. Custom Interactive Cursor Logic ---
+            const cursor = document.getElementById('custom-cursor');
+
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            // Expand cursor when hovering over interactive elements
+            const interactables = document.querySelectorAll('a, button, .service-box');
+            interactables.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'scale(2.5)';
+                    cursor.style.background = 'rgba(153, 204, 51, 0.5)';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'scale(1)';
+                    cursor.style.background = '#99CC33';
+                });
+            });
+
+            // --- 2. Magnetic Button Effect Logic ---
+            const magneticBtns = document.querySelectorAll('.btn-green, .lsg-health-appointment-btn');
+            magneticBtns.forEach(btn => {
+                btn.addEventListener('mousemove', function(e) {
+                    const position = btn.getBoundingClientRect();
+                    const x = e.clientX - position.left - position.width / 2;
+                    const y = e.clientY - position.top - position.height / 2;
+                    // Creates a subtle "pull" effect towards the mouse
+                    btn.style.transform = `translate(${x * 0.3}px, ${y * 0.5}px) scale(1.05)`;
+                });
+
+                btn.addEventListener('mouseout', function() {
+                    btn.style.transform = 'translate(0px, 0px) scale(1)';
+                });
+            });
+
+            // --- 3. Advanced Scroll Reveal Animation ---
+            // Targeting all major sections and boxes for that "pop-up" effect
+            const revealElements = document.querySelectorAll('.service-box, .hero h1, .hero p, .main-visual, .lsg-health-cta-bg, footer .row');
+            
+            revealElements.forEach(el => {
+                el.style.opacity = "0";
+                el.style.transform = "translateY(40px) scale(0.95)";
+                el.style.transition = "all 0.9s cubic-bezier(0.17, 0.67, 0.83, 0.67)";
+            });
+
+            const revealOnScroll = () => {
+                revealElements.forEach(el => {
+                    const elementTop = el.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    if (elementTop < windowHeight - 80) {
+                        el.classList.add('reveal-visible');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', revealOnScroll);
+            revealOnScroll(); // Run immediately for top-of-page elements
+
+            // --- 4. Global Smooth Scroll for Anchors ---
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if(target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

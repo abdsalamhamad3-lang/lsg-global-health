@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | Join LSG Global Health</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        :root {
+            --brand-green: #99CC33; 
+            --brand-grey: #2D3436;  
+            --footer-dark: #121212;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+        }
+
+        /* 1. Custom Interactive Cursor */
+        #custom-cursor {
+            width: 20px; height: 20px;
+            background: var(--brand-green);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.2s ease;
+            display: none;
+        }
+        @media (min-width: 992px) { #custom-cursor { display: block; } }
+
+        /* 2. Scroll Reveal Setup */
+        .reveal-item {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .reveal-visible {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--brand-grey);
+            background-color: #fdfdfd;
+            overflow-x: hidden;
+        }
+
+        /* --- ACTIVE PILL INDICATOR --- */
+        .page-career .navbar-nav .nav-item:nth-child(4) .nav-link {
+            color: white !important;
+            background: var(--brand-green);
+            padding: 8px 20px !important;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(153, 204, 51, 0.4);
+        }
+
+        .navbar { backdrop-filter: blur(15px); background: var(--glass-bg); border-bottom: 1px solid rgba(0,0,0,0.05); }
+        .nav-link { font-weight: 700; text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; margin: 0 15px; color: var(--brand-grey) !important; transition: 0.3s; }
+
+        /* --- CAREER HERO --- */
+        .career-hero {
+            padding: 160px 0 100px;
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+                        url('img/careerhero.png') no-repeat;
+            background-size: cover;
+            background-position: center;
+            color: white;
+            border-radius: 0 0 100px 100px;
+            margin-top: -100px;
+        }
+
+        /* --- JOB CARDS --- */
+        .job-card {
+            background: white;
+            border-radius: 30px;
+            padding: 40px;
+            border: 1px solid #f0f0f0;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            height: 100%;
+            position: relative;
+        }
+        .job-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--brand-green);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.08);
+        }
+        
+        .job-tag {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            font-weight: 800;
+            padding: 6px 14px;
+            border-radius: 12px;
+            background: #f4f9e9;
+            color: var(--brand-green);
+            display: inline-block;
+        }
+
+        .btn-apply {
+            background: var(--brand-green);
+            color: white !important;
+            font-weight: 700;
+            border-radius: 50px;
+            padding: 12px 28px;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .btn-apply:hover { 
+            letter-spacing: 1px;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(153, 204, 51, 0.3);
+        }
+
+        /* --- CALL TO ACTION BOX --- */
+        .cta-box {
+            transition: transform 0.4s ease;
+        }
+        .cta-box:hover {
+            transform: scale(1.02);
+        }
+
+        footer { background: var(--footer-dark); border-radius: 60px 60px 0 0; padding: 100px 0 40px; color: white; margin-top: 100px; }
+        footer a { color: rgba(255,255,255,0.6); text-decoration: none; transition: 0.3s; }
+        footer a:hover { color: var(--brand-green); }
+
+        @media (max-width: 991px) {
+            .navbar-nav { padding: 20px 0; gap: 15px; }
+            .career-hero { text-align: center; border-radius: 0 0 50px 50px; padding-top: 180px; }
+            footer { text-align: center; border-radius: 30px 30px 0 0; }
+        }
+    </style>
+</head>
+
+<body class="page-career">
+
+    <div id="custom-cursor"></div>
+
+    <nav class="navbar navbar-expand-lg sticky-top py-3">
+        <div class="container">
+            <a class="navbar-brand" href="index.html"><img style="width: 100px; height: 80px; object-fit: contain;" src="img/logo.png" alt="LSG Global"></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <i class="bi bi-list fs-1"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav mx-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="career.html">Career</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
+                </ul>
+                <div class="text-end d-none d-lg-block">
+                    <small class="text-muted fw-bold d-block text-uppercase" style="font-size: 0.65rem;">Priority Support</small>
+                    <span class="fw-800" style="color: var(--brand-green); font-size: 1.2rem;">+2349012345678</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="career-hero">
+        <div class="container text-center">
+            <h1 class="display-3 fw-800 mb-3 reveal-item">Shape the Future of <br><span style="color: var(--brand-green);">Global Health</span></h1>
+            <p class="lead mx-auto reveal-item" style="max-width: 650px; opacity: 0.9;">We are looking for dedicated clinicians, logistics experts, and facility managers to help us deliver excellence worldwide.</p>
+        </div>
+    </header>
+
+    <section class="py-5 bg-white">
+        <div class="container py-5">
+            <div class="row mb-5 reveal-item">
+                <div class="col-lg-6">
+                    <h2 class="fw-bold">Open Positions</h2>
+                    <p class="text-secondary">Find your next mission with LSG Global Health.</p>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4 reveal-item">
+                    <div class="job-card">
+                        <span class="job-tag">Full-Time</span>
+                        <h4 class="fw-bold mt-4">Clinical Operations Lead</h4>
+                        <p class="text-muted small mb-4"><i class="bi bi-geo-alt me-1"></i> Remote / Global Travel</p>
+                        <p class="small text-secondary mb-4">Oversee clinical standards and facility performance across our global diagnostic centers.</p>
+                        <a href="#" class="btn-apply">Apply Now <i class="bi bi-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 reveal-item">
+                    <div class="job-card">
+                        <span class="job-tag">Contract</span>
+                        <h4 class="fw-bold mt-4">Specialist Nurse (ICU)</h4>
+                        <p class="text-muted small mb-4"><i class="bi bi-geo-alt me-1"></i> Lagos, Nigeria</p>
+                        <p class="small text-secondary mb-4">Join our rapid-response medical staffing team for specialized healthcare facilities.</p>
+                        <a href="#" class="btn-apply">Apply Now <i class="bi bi-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 reveal-item">
+                    <div class="job-card">
+                        <span class="job-tag">Full-Time</span>
+                        <h4 class="fw-bold mt-4">Logistics Manager</h4>
+                        <p class="text-muted small mb-4"><i class="bi bi-geo-alt me-1"></i> Health City, NY</p>
+                        <p class="small text-secondary mb-4">Manage complex supply chains for sensitive medical equipment and pharmaceuticals.</p>
+                        <a href="#" class="btn-apply">Apply Now <i class="bi bi-arrow-right ms-2"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-light" style="border-radius: 80px;">
+        <div class="container py-5">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-5 reveal-item">
+                    <h2 class="fw-bold mb-5">Why Work With Us?</h2>
+                    <div class="d-flex mb-4 align-items-start">
+                        <div class="me-4 p-3 bg-white rounded-4 shadow-sm"><i class="bi bi-globe2 fs-3 text-success"></i></div>
+                        <div>
+                            <h5 class="fw-bold">Global Impact</h5>
+                            <p class="small text-muted">Your work directly improves healthcare systems in underserved regions across continents.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex mb-4 align-items-start">
+                        <div class="me-4 p-3 bg-white rounded-4 shadow-sm"><i class="bi bi-graph-up-arrow fs-3 text-success"></i></div>
+                        <div>
+                            <h5 class="fw-bold">Career Growth</h5>
+                            <p class="small text-muted">Continuous learning environment with access to international medical protocols and training.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7 reveal-item">
+                    <div class="bg-white p-5 rounded-5 shadow-lg text-center cta-box border border-light">
+                        <h3 class="fw-800 mb-3">Don't see a fit?</h3>
+                        <p class="text-secondary mb-4">Our talent pool is always growing. Send us your CV for future opportunities that match your expertise.</p>
+                        <a href="mailto:careers@lsgglobalhealth.com" class="btn btn-dark px-5 py-3 rounded-pill fw-bold">
+                            <i class="bi bi-envelope-paper me-2"></i> Drop Your Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <img src="img/logo.png" alt="Logo" height="50" class="mb-4 bg-white p-2 rounded mx-auto d-block d-lg-inline-block">
+                    <p class="opacity-75">LSG Global Health is a premier provider of integrated healthcare solutions.</p>
+                </div>
+                <div class="col-md-4 col-lg-2 ms-lg-auto">
+                    <h5>Company</h5>
+                    <ul class="list-unstyled mt-4">
+                        <li><a href="about.html" class="d-block mb-2">About Us</a></li>
+                        <li><a href="vision.html" class="d-block mb-2">Our Vision</a></li>
+                        <li><a href="impact.html" class="d-block mb-2">Global Impact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-lg-3">
+                    <h5>Connect</h5>
+                    <p class="small opacity-50 mt-4">123 Global Plaza, Health City, NY</p>
+                    <div class="mt-4">
+                        <a href="#" class="me-3 fs-4 text-decoration-none"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="me-3 fs-4 text-decoration-none"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="fs-4 text-decoration-none"><i class="bi bi-twitter-x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="mt-5 opacity-10">
+            <div class="text-center small opacity-50 pt-3">© 2026 LSG Global Health. All Rights Reserved.</div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Custom Cursor
+            const cursor = document.getElementById('custom-cursor');
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            });
+
+            // Hover interactions
+            const targets = document.querySelectorAll('a, button, .job-card, .cta-box');
+            targets.forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    cursor.style.transform = 'scale(3)';
+                    cursor.style.background = 'rgba(153, 204, 51, 0.3)';
+                });
+                el.addEventListener('mouseleave', () => {
+                    cursor.style.transform = 'scale(1)';
+                    cursor.style.background = '#99CC33';
+                });
+            });
+
+            // 2. Scroll Reveal Engine
+            const revealItems = document.querySelectorAll('.reveal-item');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('reveal-visible');
+                    }
+                });
+            }, { threshold: 0.15 });
+
+            revealItems.forEach(item => observer.observe(item));
+        });
+    </script>
+</body>
+</html>
